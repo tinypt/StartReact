@@ -497,18 +497,32 @@ var dataPie = {
   series: [40, 20, 40]
 };
 
-const thBrandArray = ["#","Name","Create at","Update by","Action"];
+const thBrandArray = ["#","Name","Create at","Update at","Update by","Action"];
 const tdBrandArray = [
   ["1","HP","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
   ["2","Lenovo","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
-  ["3","HP","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"]
+  ["3","Saijo-Denki	","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
+  ["4","TRANE","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
+  ["5","YORK","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"]
 ];
 
-const thTypeArray = ["#","Name","Create at","Update by","Action"];
+const thTypeArray = ["#","Name","Create at","Update at","Update by","Action"];
 const tdTypeArray = [
   ["1","Light","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"],
   ["2","Computer","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"],
-  ["3","Toilet","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"]
+  ["3","Toilet","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"],
+  ["4","Air","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"],
+  ["5","Printer","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"]
+];
+
+const thItemArray = ["#","Code","Name","Building","Room Name","Type","Brand","Serial Number","Model","Create at","Update at","Update by","Action"];
+const tdItemArray = [
+  ["1","FCU2-31	","เครื่องปรับอากาศ","SIT","Library","Air-Condition	","Saijo-Denki","-","-","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"],
+  ["2","FCU-10","เครื่องปรับอากาศ","CB2	","Library","Air-Condition	","TRANE","-","-","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"],
+  ["3","Train1-PC-00","PC","SIT","CB_2308","Computer	","HP","-","-","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"],
+  ["4","Train1-PC-11","PC","SIT","Training_Room1","Computer	","Lenovo","-","-","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"],
+  ["5","LIB-LIGHT	","หลอดไฟกลม","SIT","Training_Room1","Light	","-","-","-","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"]
+ 
 ];
 
 var legendPie = {
@@ -619,6 +633,10 @@ module.exports = {
   tdArray ,
   thBrandArray,
   tdBrandArray ,// For tables (TableList view)
+  thTypeArray,
+  tdTypeArray,
+  thItemArray,
+  tdItemArray,
   iconsArray, // For icons (Icons view)
   dataPie,
   legendPie,

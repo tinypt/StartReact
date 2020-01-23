@@ -19,7 +19,9 @@ import React, { Component } from "react";
 import { Grid, Row, Col, Table } from "react-bootstrap";
 
 import Card from "components/Card/Card.jsx";
-import { thArray, tdArray } from "variables/Variables.jsx";
+import CustomCheckbox from "components/CustomCheckbox/CustomCheckbox.jsx";
+import { thTypeArray, tdTypeArray } from "variables/Variables.jsx";
+import Button from "components/CustomButton/CustomButton.jsx";
 
 class ItemTypes extends Component {
   render() {
@@ -29,26 +31,37 @@ class ItemTypes extends Component {
           <Row>
             <Col md={12}>
               <Card
-                title="Striped Table with Hover"
-                category="Here is a subtitle for this table"
+                title="ALL Item Types"
+                category="ประเภทของครุภัณฑ์"
                 ctTableFullWidth
                 ctTableResponsive
                 content={
                   <Table striped hover>
                     <thead>
                       <tr>
-                        {thArray.map((prop, key) => {
+                      <th><CustomCheckbox/></th>
+                        {thTypeArray.map((prop, key) => {
                           return <th key={key}>{prop}</th>;
                         })}
                       </tr>
                     </thead>
                     <tbody>
-                      {tdArray.map((prop, key) => {
+                      {tdTypeArray.map((prop, key) => {
                         return (
                           <tr key={key}>
+                            <th><CustomCheckbox/></th>
                             {prop.map((prop, key) => {
-                              return <td key={key}>{prop}</td>;
+                              return <td key={key}>{prop}</td>
+                              ;
                             })}
+                            <td>
+                            <Button bsStyle="info" simple type="button" bsSize="xs">
+                           <i className="fa fa-edit" />
+                           </Button>
+                           <Button bsStyle="danger" simple type="button" bsSize="xs">
+                             <i className="fa fa-times" />
+                          </Button>
+                            </td>
                           </tr>
                         );
                       })}

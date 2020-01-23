@@ -21,7 +21,8 @@ import { Grid, Row, Col, Table } from "react-bootstrap";
 import Card from "components/Card/Card.jsx";
 import CustomCheckbox from "components/CustomCheckbox/CustomCheckbox.jsx";
 import { thBrandArray, tdBrandArray } from "variables/Variables.jsx";
-
+import Tasks from "components/Tasks/Tasks";
+import Button from "components/CustomButton/CustomButton.jsx";
 class Brand extends Component {
   constructor(props){
     super(props);
@@ -34,29 +35,48 @@ class Brand extends Component {
         <Grid fluid>
           <Row>
             <Col md={12}>
-              <Card
-                title="All Brands"
-                category="Here is a subtitle for this table"
+            <Button bsStyle="info" pullRight fill type="submit">
+            Add New Brand
+            </Button>
+            <Button bsStyle="info" pullRight fill type="submit">
+              Delete 
+            </Button>
+              <Card 
+                title="ALL Brands"
+                category="ประเภทของแบรนด์"
                 ctTableFullWidth
                 ctTableResponsive
                 content={
                   <Table striped hover>
                     <thead>
-
-                      <tr>
-                        <th ><CustomCheckbox/></th>
+                     <tr>
+                       
+                        <th><CustomCheckbox/></th>
                         {thBrandArray.map((prop, key) => {
                           return <th key={key}>{prop}</th>;
                         })}
+                        
                       </tr>
+                      
+                      
                     </thead>
                     <tbody>
                       {tdBrandArray.map((prop, key) => {
                         return (
                           <tr key={key}>
+                            <th><CustomCheckbox/></th>
                             {prop.map((prop, key) => {
-                              return <td key={key}>{prop}</td>;
+                              return <td key={key}>{prop}</td>
+                              ;
                             })}
+                            <td>
+                            <Button bsStyle="info" simple type="button" bsSize="xs">
+                           <i className="fa fa-edit" />
+                           </Button>
+                           <Button bsStyle="danger" simple type="button" bsSize="xs">
+                             <i className="fa fa-times" />
+                          </Button>
+                            </td>
                           </tr>
                         );
                       })}
@@ -64,6 +84,7 @@ class Brand extends Component {
                   </Table>
                 }
               />
+              
             </Col>
 
           </Row>
