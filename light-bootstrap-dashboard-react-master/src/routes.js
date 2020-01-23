@@ -23,6 +23,8 @@ import Icons from "views/Icons.jsx";
 import Maps from "views/Maps.jsx";
 import Notifications from "views/Notifications.jsx";
 import Upgrade from "views/Upgrade.jsx";
+import Buildings from 'views/Buildings.jsx';
+
 import Brand from "views/Brand.jsx";
 import Items from "views/Items.jsx";
 import ItemTypes from "views/ItemTypes.jsx";
@@ -36,6 +38,10 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
+    path: "/building",
+    name: "Building",
+    icon: "pe-7s-graph",
+    component: Buildings,
     path: "/Brand",
     name: "Brand",
     icon: "pe-7s-ribbon",
