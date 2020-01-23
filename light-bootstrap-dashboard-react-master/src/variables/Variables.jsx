@@ -493,6 +493,21 @@ var dataPie = {
   labels: ["40%", "20%", "40%"],
   series: [40, 20, 40]
 };
+
+const thBrandArray = ["#","Name","Create at","Update by","Action"];
+const tdBrandArray = [
+  ["1","HP","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
+  ["2","Lenovo","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
+  ["3","HP","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"]
+];
+
+const thTypeArray = ["#","Name","Create at","Update by","Action"];
+const tdTypeArray = [
+  ["1","Light","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"],
+  ["2","Computer","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"],
+  ["3","Toilet","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"]
+];
+
 var legendPie = {
   names: ["Open", "Bounce", "Unsubscribe"],
   types: ["info", "danger", "warning"]
@@ -596,9 +611,17 @@ var legendBar = {
 };
 
 module.exports = {
+<<<<<<< HEAD
   style, // For notifications (App container and Notifications view) // For tables (TableList view)
   thBuildingArray,
   tdBuildingArray,
+=======
+  style, // For notifications (App container and Notifications view)
+  thArray,
+  tdArray ,
+  thBrandArray,
+  tdBrandArray ,// For tables (TableList view)
+>>>>>>> 38ce404a845371d1b7b70861331a414b12182cc8
   iconsArray, // For icons (Icons view)
   dataPie,
   legendPie,
