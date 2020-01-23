@@ -266,14 +266,11 @@ var style = {
 // // // For tables
 // //
 //
-const thArray = ["ID", "Name", "Salary", "Country", "City"];
-const tdArray = [
-  ["1", "Dakota Rice", "$36,738", "Niger", "Oud-Turnhout"],
-  ["2", "Minerva Hooper", "$23,789", "Curaçao", "Sinaai-Waas"],
-  ["3", "Sage Rodriguez", "$56,142", "Netherlands", "Baileux"],
-  ["4", "Philip Chaney", "$38,735", "Korea, South", "Overland Park"],
-  ["5", "Doris Greene", "$63,542", "Malawi", "Feldkirchen in Kärnten"],
-  ["6", "Mason Porter", "$78,615", "Chile", "Gloucester"]
+const thBuildingArray = ["#","Code", "Name", "Create at", "Update at", "Update by","Action"];
+const tdBuildingArray = [
+  ["1", "SIT", "ตึกเทคโนโลยีสารสนเทศ", "2020-01-09 23:11:54", "2020-01-09 23:11:54","seeder"],
+  ["2", "CB2", "ตึกCB2", "2020-01-09 23:11:54", "2020-01-09 23:11:54" ,"seeder"],
+  ["3", "CB4", "ตึกCB4", "2020-01-09 23:11:54", "2020-01-09 23:11:54", "seeder"]
 ];
 
 //
@@ -599,9 +596,9 @@ var legendBar = {
 };
 
 module.exports = {
-  style, // For notifications (App container and Notifications view)
-  thArray,
-  tdArray, // For tables (TableList view)
+  style, // For notifications (App container and Notifications view) // For tables (TableList view)
+  thBuildingArray,
+  tdBuildingArray,
   iconsArray, // For icons (Icons view)
   dataPie,
   legendPie,
