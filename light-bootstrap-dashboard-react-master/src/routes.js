@@ -42,7 +42,9 @@ const dashboardRoutes = [
     name: "Building",
     icon: "pe-7s-graph",
     component: Buildings,
-    path: "/Brand",
+    layout: "/admin"
+  },
+   { path: "/Brand",
     name: "Brand",
     icon: "pe-7s-ribbon",
     component: Brand,
@@ -69,13 +71,13 @@ const dashboardRoutes = [
     component: UserProfile,
     layout: "/admin"
   },
-  {
-    path: "/table",
-    name: "Table List",
-    icon: "pe-7s-note2",
-    component: TableList,
-    layout: "/admin"
-  },
+  // {
+  //   path: "/table",
+  //   name: "Table List",
+  //   icon: "pe-7s-note2",
+  //   component: TableList,
+  //   layout: "/admin"
+  // },
   // {
   //   path: "/typography",
   //   name: "Typography",

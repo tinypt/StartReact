@@ -16,30 +16,66 @@
 
 */
 import React, { Component } from "react";
-import { Grid, Row, Col, Table } from "react-bootstrap";
+import { Grid, Row, Col, Table,OverlayTrigger,
+  Tooltip } from "react-bootstrap";
 
 import Card from "components/Card/Card.jsx";
-import CustomCheckbox from "components/CustomCheckbox/CustomCheckbox.jsx";
+import Checkbox from "components/CustomCheckbox/CustomCheckbox.jsx";
 import { thTypeArray, tdTypeArray } from "variables/Variables.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 
 class ItemTypes extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  handleCheckbox = event => {
+    const target = event.target;
+    console.log(event.target);
+    this.setState({
+      [target.name]: target.checked
+    });
+  };
+
+  handleClick() {
+    var i = 0;
+    this.setState((i = 1));
+  }
   render() {
+    var number = -1;
+    var i = 0;
+    // for(var i = 0; i < tdArray.length ; i++){
+    //   number = "checkbox" + i;
+    // }
+    const edit = <Tooltip id="edit_tooltip">Edit Task</Tooltip>;
+    const remove = <Tooltip id="remove_tooltip">Remove</Tooltip>;
     return (
       <div className="content">
         <Grid fluid>
           <Row>
             <Col md={12}>
+              {/* <Button bsStyle="info" pullRight fill type="submit">
+            Add New Brand
+            </Button>
+            <Button bsStyle="info" pullRight fill type="submit">
+              Delete 
+            </Button> */}
               <Card
-                title="ALL Item Types"
-                category="ประเภทของครุภัณฑ์"
+                title="ALL ItemType"
+                category="ประเภทของแบรนด์"
                 ctTableFullWidth
                 ctTableResponsive
                 content={
                   <Table striped hover>
                     <thead>
                       <tr>
-                      <th><CustomCheckbox/></th>
+                        <th>
+                          <Checkbox
+                            number={number}
+                            isChecked={i === 1 || i === 2 ? true : false}
+                            //onChange={this.handleClick}
+                          ></Checkbox>
+                        </th>
                         {thTypeArray.map((prop, key) => {
                           return <th key={key}>{prop}</th>;
                         })}
@@ -49,18 +85,38 @@ class ItemTypes extends Component {
                       {tdTypeArray.map((prop, key) => {
                         return (
                           <tr key={key}>
-                            <th><CustomCheckbox/></th>
+                            <th>
+                            <Checkbox
+                                  number={key}
+                                  key={key}
+                                  isChecked={i === 1 || i === 2 ? true : false}
+                                ></Checkbox>
+                            </th>
                             {prop.map((prop, key) => {
-                              return <td key={key}>{prop}</td>
-                              ;
+                              return <td key={key}>{prop}</td>;
                             })}
                             <td>
-                            <Button bsStyle="info" simple type="button" bsSize="xs">
-                           <i className="fa fa-edit" />
-                           </Button>
-                           <Button bsStyle="danger" simple type="button" bsSize="xs">
-                             <i className="fa fa-times" />
-                          </Button>
+                              <OverlayTrigger placement="top" overlay={edit}>
+                                <Button
+                                  bsStyle="info"
+                                  simple
+                                  type="button"
+                                  bsSize="xs"
+                                >
+                                  <i className="fa fa-edit" />
+                                </Button>
+                              </OverlayTrigger>
+
+                              <OverlayTrigger placement="top" overlay={remove}>
+                                <Button
+                                  bsStyle="danger"
+                                  simple
+                                  type="button"
+                                  bsSize="xs"
+                                >
+                                  <i className="fa fa-times" />
+                                </Button>
+                              </OverlayTrigger>
                             </td>
                           </tr>
                         );
@@ -70,38 +126,6 @@ class ItemTypes extends Component {
                 }
               />
             </Col>
-
-            {/* <Col md={12}>
-              <Card
-                plain
-                title="Striped Table with Hover"
-                category="Here is a subtitle for this table"
-                ctTableFullWidth
-                ctTableResponsive
-                content={
-                  <Table hover>
-                    <thead>
-                      <tr>
-                        {thArray.map((prop, key) => {
-                          return <th key={key}>{prop}</th>;
-                        })}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {tdArray.map((prop, key) => {
-                        return (
-                          <tr key={key}>
-                            {prop.map((prop, key) => {
-                              return <td key={key}>{prop}</td>;
-                            })}
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </Table>
-                }
-              />
-            </Col> */}
           </Row>
         </Grid>
       </div>

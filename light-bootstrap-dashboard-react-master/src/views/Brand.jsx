@@ -16,32 +16,56 @@
 
 */
 import React, { Component } from "react";
-import { Grid, Row, Col, Table } from "react-bootstrap";
-
+import {
+  Grid,
+  Row,
+  Col,
+  Table,
+  OverlayTrigger,
+  Tooltip
+} from "react-bootstrap";
 import Card from "components/Card/Card.jsx";
-import CustomCheckbox from "components/CustomCheckbox/CustomCheckbox.jsx";
+import Checkbox from "components/CustomCheckbox/CustomCheckbox.jsx";
 import { thBrandArray, tdBrandArray } from "variables/Variables.jsx";
 import Tasks from "components/Tasks/Tasks";
 import Button from "components/CustomButton/CustomButton.jsx";
 class Brand extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {};
   }
+  handleCheckbox = event => {
+    const target = event.target;
+    console.log(event.target);
+    this.setState({
+      [target.name]: target.checked
+    });
+  };
 
+  handleClick() {
+    var i = 0;
+    this.setState((i = 1));
+  }
   render() {
+    var number = -1;
+    var i = 0;
+    // for(var i = 0; i < tdArray.length ; i++){
+    //   number = "checkbox" + i;
+    // }
+    const edit = <Tooltip id="edit_tooltip">Edit Task</Tooltip>;
+    const remove = <Tooltip id="remove_tooltip">Remove</Tooltip>;
     return (
       <div className="content">
         <Grid fluid>
           <Row>
             <Col md={12}>
-            <Button bsStyle="info" pullRight fill type="submit">
+              {/* <Button bsStyle="info" pullRight fill type="submit">
             Add New Brand
             </Button>
             <Button bsStyle="info" pullRight fill type="submit">
               Delete 
-            </Button>
-              <Card 
+            </Button> */}
+              <Card
                 title="ALL Brands"
                 category="ประเภทของแบรนด์"
                 ctTableFullWidth
@@ -49,33 +73,55 @@ class Brand extends Component {
                 content={
                   <Table striped hover>
                     <thead>
-                     <tr>
-                       
-                        <th><CustomCheckbox/></th>
+                      <tr>
+                        <th>
+                          <Checkbox
+                            number={number}
+                            isChecked={i === 1 || i === 2 ? true : false}
+                            //onChange={this.handleClick}
+                          ></Checkbox>
+                        </th>
                         {thBrandArray.map((prop, key) => {
                           return <th key={key}>{prop}</th>;
                         })}
-                        
                       </tr>
-                      
-                      
                     </thead>
                     <tbody>
                       {tdBrandArray.map((prop, key) => {
                         return (
                           <tr key={key}>
-                            <th><CustomCheckbox/></th>
+                            <th>
+                            <Checkbox
+                                  number={key}
+                                  key={key}
+                                  isChecked={i === 1 || i === 2 ? true : false}
+                                ></Checkbox>
+                            </th>
                             {prop.map((prop, key) => {
-                              return <td key={key}>{prop}</td>
-                              ;
+                              return <td key={key}>{prop}</td>;
                             })}
                             <td>
-                            <Button bsStyle="info" simple type="button" bsSize="xs">
-                           <i className="fa fa-edit" />
-                           </Button>
-                           <Button bsStyle="danger" simple type="button" bsSize="xs">
-                             <i className="fa fa-times" />
-                          </Button>
+                              <OverlayTrigger placement="top" overlay={edit}>
+                                <Button
+                                  bsStyle="info"
+                                  simple
+                                  type="button"
+                                  bsSize="xs"
+                                >
+                                  <i className="fa fa-edit" />
+                                </Button>
+                              </OverlayTrigger>
+
+                              <OverlayTrigger placement="top" overlay={remove}>
+                                <Button
+                                  bsStyle="danger"
+                                  simple
+                                  type="button"
+                                  bsSize="xs"
+                                >
+                                  <i className="fa fa-times" />
+                                </Button>
+                              </OverlayTrigger>
                             </td>
                           </tr>
                         );
@@ -84,9 +130,7 @@ class Brand extends Component {
                   </Table>
                 }
               />
-              
             </Col>
-
           </Row>
         </Grid>
       </div>

@@ -629,8 +629,6 @@ module.exports = {
   thBuildingArray,
   tdBuildingArray,
   style, // For notifications (App container and Notifications view)
-  thArray,
-  tdArray ,
   thBrandArray,
   tdBrandArray ,// For tables (TableList view)
   thTypeArray,
