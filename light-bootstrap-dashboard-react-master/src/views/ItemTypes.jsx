@@ -61,8 +61,8 @@ class ItemTypes extends Component {
               Delete 
             </Button> */}
               <Card
-                title="ALL ItemType"
-                category="ประเภทของแบรนด์"
+                title="ALL ItemTypes"
+                category="ประเภทของครุภัณฑ์"
                 ctTableFullWidth
                 ctTableResponsive
                 content={

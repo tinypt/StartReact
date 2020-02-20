@@ -45,8 +45,8 @@ class Building extends Component {
           <Row>
             <Col md={12}>
               <Card
-                title="Buildings"
-                category="Here is all buildings."
+                title="ALL Buildings"
+                category="ตึกทั้งหมด"
                 ctTableFullWidth
                 ctTableResponsive
                 content={
