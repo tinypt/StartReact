@@ -489,7 +489,6 @@ var dataPie = {
   series: [40, 20, 40]
 };
 
-<<<<<<< HEAD
 const thBuildingArray = ["#","Code", "Name", "Create at", "Update at", "Update by","Action"];
 const tdBuildingArray = [
   ["1", "SIT", "ตึกเทคโนโลยีสารสนเทศ", "2020-01-09 23:11:54", "2020-01-09 23:11:54","seeder"],
@@ -497,10 +496,7 @@ const tdBuildingArray = [
   ["3", "CB4", "ตึกCB4", "2020-01-09 23:11:54", "2020-01-09 23:11:54", "seeder"]
 ];
 
-const thBrandArray = ["#","Name","Create at","Update by","Action"];
-=======
 const thBrandArray = ["#","Name","Create at","Update at","Update by","Action"];
->>>>>>> b4fc681f34a1f3193f62e1298164f9b69efe3335
 const tdBrandArray = [
   ["1","HP","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
   ["2","Lenovo","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
@@ -509,7 +505,6 @@ const tdBrandArray = [
   ["5","YORK","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"]
 ];
 
-<<<<<<< HEAD
 const thRoomArray = ["#","Code", "Name", "Building", "Create at", "Update by","Action"];
 const tdRoomArray = [
   ["1","HP","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
@@ -517,10 +512,7 @@ const tdRoomArray = [
   ["3","HP","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"]
 ];
 
-const thTypeArray = ["#","Name","Create at","Update by","Action"];
-=======
 const thTypeArray = ["#","Name","Create at","Update at","Update by","Action"];
->>>>>>> b4fc681f34a1f3193f62e1298164f9b69efe3335
 const tdTypeArray = [
   ["1","Light","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"],
   ["2","Computer","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"],
@@ -648,13 +640,10 @@ module.exports = {
   style, // For notifications (App container and Notifications view)
   thBrandArray,
   tdBrandArray ,// For tables (TableList view)
-<<<<<<< HEAD
-=======
   thTypeArray,
   tdTypeArray,
   thItemArray,
   tdItemArray,
->>>>>>> b4fc681f34a1f3193f62e1298164f9b69efe3335
   iconsArray, // For icons (Icons view)
   dataPie,
   legendPie,

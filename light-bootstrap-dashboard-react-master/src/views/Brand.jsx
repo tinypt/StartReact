@@ -50,9 +50,10 @@ class Brand extends Component {
   handleEditModal = event => {
     this.setState({ isEditModal: event });
   };
-  handleRemoveModal = event =>{
-    this.
-  }
+
+  // handleRemoveModal = event =>{
+  //   this.
+  // }
 
   handleCheckbox = event => {
     const target = event.target;
