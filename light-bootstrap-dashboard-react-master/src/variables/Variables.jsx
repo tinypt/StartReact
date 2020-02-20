@@ -266,12 +266,7 @@ var style = {
 // // // For tables
 // //
 //
-const thBuildingArray = ["#","Code", "Name", "Create at", "Update at", "Update by","Action"];
-const tdBuildingArray = [
-  ["1", "SIT", "ตึกเทคโนโลยีสารสนเทศ", "2020-01-09 23:11:54", "2020-01-09 23:11:54","seeder"],
-  ["2", "CB2", "ตึกCB2", "2020-01-09 23:11:54", "2020-01-09 23:11:54" ,"seeder"],
-  ["3", "CB4", "ตึกCB4", "2020-01-09 23:11:54", "2020-01-09 23:11:54", "seeder"]
-];
+
 
 //
 // //
@@ -494,9 +489,34 @@ var dataPie = {
   series: [40, 20, 40]
 };
 
-const thBrandArray = ["#","Name","Create at","Update at","Update by","Action"];
 
-const thTypeArray = ["#","Name","Create at","Update at","Update by","Action"];
+const thBuildingArray = ["#","Code", "Name", "Create at", "Update at", "Update by","Action"];
+const tdBuildingArray = [
+  ["1", "SIT", "ตึกเทคโนโลยีสารสนเทศ", "2020-01-09 23:11:54", "2020-01-09 23:11:54","seeder"],
+  ["2", "CB2", "ตึกCB2", "2020-01-09 23:11:54", "2020-01-09 23:11:54" ,"seeder"],
+  ["3", "CB4", "ตึกCB4", "2020-01-09 23:11:54", "2020-01-09 23:11:54", "seeder"]
+];
+
+const thBrandArray = ["#","Name","Create at","Update by","Action"];
+
+const thBrandArray = ["#","Name","Create at","Update at","Update by","Action"];
+const tdBrandArray = [
+  ["1","HP","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
+  ["2","Lenovo","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
+  ["3","Saijo-Denki	","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
+  ["4","TRANE","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
+  ["5","YORK","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"]
+];
+
+
+const thRoomArray = ["#","Code", "Name", "Building", "Create at", "Update by","Action"];
+const tdRoomArray = [
+  ["1","HP","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
+  ["2","Lenovo","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
+  ["3","HP","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"]
+];
+
+const thTypeArray = ["#","Name","Create at","Update by","Action"];
 const tdTypeArray = [
   ["1","Light","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"],
   ["2","Computer","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"],
@@ -623,6 +643,9 @@ module.exports = {
   tdBuildingArray,
   style, // For notifications (App container and Notifications view)
   thBrandArray,
+
+
+  tdBrandArray ,// For tables (TableList view)
   thTypeArray,
   tdTypeArray,
   thItemArray,
