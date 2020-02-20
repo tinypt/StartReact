@@ -17,14 +17,7 @@
 */
 import React, { Component } from "react";
 import axios from "axios";
-import {
-  Grid,
-  Row,
-  Col,
-  Table,
-  OverlayTrigger,
-  Tooltip
-} from "react-bootstrap";
+import {Grid,Row,Col,Table,OverlayTrigger,Tooltip} from "react-bootstrap";
 import Card from "components/Card/Card.jsx";
 import Checkbox from "components/CustomCheckbox/CustomCheckbox.jsx";
 import { thBrandArray } from "variables/Variables.jsx";
@@ -47,12 +40,13 @@ class Brand extends Component {
     isEditModal: false,
     isRemoveModal: false
   };
+  
   handleEditModal = event => {
     this.setState({ isEditModal: event });
   };
   handleRemoveModal = event =>{
-    this.
-  }
+    this.setState({isRemoveModal:event});
+  };
 
   handleCheckbox = event => {
     const target = event.target;
@@ -61,7 +55,6 @@ class Brand extends Component {
       [target.name]: target.checked
     });
   };
-
   handleClick() {
     var i = 0;
     this.setState((i = 1));
@@ -77,8 +70,8 @@ class Brand extends Component {
   render() {
     var number = -1;
     var i = 0;
-    // for(var i = 0; i < tdArray.length ; i++){
-    //   number = "checkbox" + i;
+    // for(var i = 0; i < this.state.length ; i++){
+    //   number = "Checkbox" + i;
     // }
     const edit = <Tooltip id="edit_tooltip">Edit Task</Tooltip>;
     const remove = <Tooltip id="remove_tooltip">Remove</Tooltip>;
@@ -88,6 +81,9 @@ class Brand extends Component {
           isEditModal={this.state.isEditModal}
           handleEditModal={this.handleEditModal}
         />
+        <RemoveModal
+        isRemoveModal={this.state.isRemoveModal}
+        handleRemoveModal={this.handleRemoveModal}/>
         <Grid fluid>
           <Row>
             <Col md={12}>
@@ -145,13 +141,13 @@ class Brand extends Component {
                                 <i className="fa fa-edit" />
                               </Button>
                             </OverlayTrigger>
-
                             <OverlayTrigger placement="top" overlay={remove}>
                               <Button
                                 bsStyle="danger"
                                 simple
                                 type="button"
                                 bsSize="xs"
+                                onClick={()=> this.handleRemoveModal(true)}
                               >
                                 <i className="fa fa-times" />
                               </Button>
@@ -163,6 +159,9 @@ class Brand extends Component {
                   </Table>
                 }
               />
+              <Button bsStyle="info" fill type="submit">Import CSV</Button>
+              <Button bsStyle="info" fill type="submit">Export CSV</Button>
+              <Button bsStyle="simple" fill type="submit">Add Brand</Button>
             </Col>
           </Row>
         </Grid>

@@ -495,13 +495,6 @@ var dataPie = {
 };
 
 const thBrandArray = ["#","Name","Create at","Update at","Update by","Action"];
-const tdBrandArray = [
-  ["1","HP","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
-  ["2","Lenovo","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
-  ["3","Saijo-Denki	","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
-  ["4","TRANE","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
-  ["5","YORK","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"]
-];
 
 const thTypeArray = ["#","Name","Create at","Update at","Update by","Action"];
 const tdTypeArray = [
@@ -630,7 +623,6 @@ module.exports = {
   tdBuildingArray,
   style, // For notifications (App container and Notifications view)
   thBrandArray,
-  tdBrandArray ,// For tables (TableList view)
   thTypeArray,
   tdTypeArray,
   thItemArray,
