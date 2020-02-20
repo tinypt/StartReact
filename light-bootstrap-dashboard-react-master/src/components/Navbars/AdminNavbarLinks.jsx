@@ -37,18 +37,15 @@ class AdminNavbarLinks extends Component {
           </NavItem>
           <NavDropdown
             eventKey={2}
-            title={Notification}
+            title={notification}
             noCaret
             id="basic-nav-dropdown"
           >
-            <MenuItem eventKey={2.1}>Notification Problems</MenuItem>
-            <MenuItem eventKey={2.2}>Problem Descriptions</MenuItem>
-            <MenuItem eventKey={2.3}>Building</MenuItem>
-            <MenuItem eventKey={2.4}>Rooms</MenuItem>
-            <MenuItem eventKey={2.5}>Items</MenuItem>
-            <MenuItem eventKey={2.6}>Item Types</MenuItem>
-            <MenuItem eventKey={2.7}>Brands</MenuItem>
-            <MenuItem eventKey={2.8}>Statuses</MenuItem>
+            <MenuItem eventKey={2.1}>Notification 1</MenuItem>
+            <MenuItem eventKey={2.2}>Notification 2</MenuItem>
+            <MenuItem eventKey={2.3}>Notification 3</MenuItem>
+            <MenuItem eventKey={2.4}>Notification 4</MenuItem>
+            <MenuItem eventKey={2.5}>Another notifications</MenuItem>
           </NavDropdown>
           <NavItem eventKey={3} href="#">
             <i className="fa fa-search" />
@@ -62,15 +59,24 @@ class AdminNavbarLinks extends Component {
           <NavDropdown
             eventKey={2}
             title="Dropdown"
+            
             id="basic-nav-dropdown-right"
           >
-            <MenuItem eventKey={2.1}>Action</MenuItem>
+            {/* <MenuItem eventKey={2.1}>Action</MenuItem>
             <MenuItem eventKey={2.2}>Another action</MenuItem>
             <MenuItem eventKey={2.3}>Something</MenuItem>
             <MenuItem eventKey={2.4}>Another action</MenuItem>
             <MenuItem eventKey={2.5}>Something</MenuItem>
             <MenuItem divider />
-            <MenuItem eventKey={2.5}>Separated link</MenuItem>
+            <MenuItem eventKey={2.5}>Separated link</MenuItem> */}
+            <MenuItem eventKey={2.1}>Notification Problems</MenuItem>
+            <MenuItem eventKey={2.2}>Problem Descriptions</MenuItem>
+            <MenuItem eventKey={2.3}>Building</MenuItem>
+            <MenuItem eventKey={2.4}>Rooms</MenuItem>
+            <MenuItem eventKey={2.5}>Items</MenuItem>
+            <MenuItem eventKey={2.6}>Item Types</MenuItem>
+            <MenuItem eventKey={2.7}>Brands</MenuItem>
+            <MenuItem eventKey={2.8}>Statuses</MenuItem>
           </NavDropdown>
           <NavItem eventKey={3} href="#">
             Log out
@@ -82,3 +88,4 @@ class AdminNavbarLinks extends Component {
 }
 
 export default AdminNavbarLinks;
+
