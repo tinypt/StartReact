@@ -266,12 +266,7 @@ var style = {
 // // // For tables
 // //
 //
-const thBuildingArray = ["#","Code", "Name", "Create at", "Update at", "Update by","Action"];
-const tdBuildingArray = [
-  ["1", "SIT", "ตึกเทคโนโลยีสารสนเทศ", "2020-01-09 23:11:54", "2020-01-09 23:11:54","seeder"],
-  ["2", "CB2", "ตึกCB2", "2020-01-09 23:11:54", "2020-01-09 23:11:54" ,"seeder"],
-  ["3", "CB4", "ตึกCB4", "2020-01-09 23:11:54", "2020-01-09 23:11:54", "seeder"]
-];
+
 
 //
 // //
@@ -494,8 +489,22 @@ var dataPie = {
   series: [40, 20, 40]
 };
 
+const thBuildingArray = ["#","Code", "Name", "Create at", "Update at", "Update by","Action"];
+const tdBuildingArray = [
+  ["1", "SIT", "ตึกเทคโนโลยีสารสนเทศ", "2020-01-09 23:11:54", "2020-01-09 23:11:54","seeder"],
+  ["2", "CB2", "ตึกCB2", "2020-01-09 23:11:54", "2020-01-09 23:11:54" ,"seeder"],
+  ["3", "CB4", "ตึกCB4", "2020-01-09 23:11:54", "2020-01-09 23:11:54", "seeder"]
+];
+
 const thBrandArray = ["#","Name","Create at","Update by","Action"];
 const tdBrandArray = [
+  ["1","HP","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
+  ["2","Lenovo","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
+  ["3","HP","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"]
+];
+
+const thRoomArray = ["#","Code", "Name", "Building", "Create at", "Update by","Action"];
+const tdRoomArray = [
   ["1","HP","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
   ["2","Lenovo","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
   ["3","HP","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"]
@@ -611,17 +620,12 @@ var legendBar = {
 };
 
 module.exports = {
-<<<<<<< HEAD
   style, // For notifications (App container and Notifications view) // For tables (TableList view)
   thBuildingArray,
   tdBuildingArray,
-=======
   style, // For notifications (App container and Notifications view)
-  thArray,
-  tdArray ,
   thBrandArray,
   tdBrandArray ,// For tables (TableList view)
->>>>>>> 38ce404a845371d1b7b70861331a414b12182cc8
   iconsArray, // For icons (Icons view)
   dataPie,
   legendPie,

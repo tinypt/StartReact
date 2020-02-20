@@ -23,14 +23,10 @@ import Icons from "views/Icons.jsx";
 import Maps from "views/Maps.jsx";
 import Notifications from "views/Notifications.jsx";
 import Upgrade from "views/Upgrade.jsx";
-<<<<<<< HEAD
 import Buildings from 'views/Buildings.jsx';
-
-=======
 import Brand from "views/Brand.jsx";
 import Items from "views/Items.jsx";
 import ItemTypes from "views/ItemTypes.jsx";
->>>>>>> 38ce404a845371d1b7b70861331a414b12182cc8
 
 const dashboardRoutes = [
   {
@@ -41,12 +37,13 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-<<<<<<< HEAD
     path: "/building",
     name: "Building",
     icon: "pe-7s-graph",
     component: Buildings,
-=======
+    layout: "/admin"
+  },
+  {
     path: "/Brand",
     name: "Brand",
     icon: "pe-7s-ribbon",
@@ -65,7 +62,6 @@ const dashboardRoutes = [
     name: "Item Type",
     icon: "pe-7s-photo-gallery",
     component: ItemTypes,
->>>>>>> 38ce404a845371d1b7b70861331a414b12182cc8
     layout: "/admin"
   },
   {
