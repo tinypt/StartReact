@@ -489,6 +489,7 @@ var dataPie = {
   series: [40, 20, 40]
 };
 
+
 const thBuildingArray = ["#","Code", "Name", "Create at", "Update at", "Update by","Action"];
 const tdBuildingArray = [
   ["1", "SIT", "ตึกเทคโนโลยีสารสนเทศ", "2020-01-09 23:11:54", "2020-01-09 23:11:54","seeder"],
@@ -505,14 +506,25 @@ const tdBrandArray = [
   ["5","YORK","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"]
 ];
 
-const thRoomArray = ["#","Code", "Name", "Building", "Create at", "Update by","Action"];
+
+const thRoomArray = ["#","Code", "Name", "Building", "Create at","Update at","Update by","Action"];
 const tdRoomArray = [
-  ["1","HP","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
-  ["2","Lenovo","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"],
-  ["3","HP","2019-11-21 16:39:42","2019-11-21 16:40:28","seeder"]
+  ["1","IT-101","Training_Room1","ตึกเทคโนโลยีสารสนเทศ","2020-01-30 14:49:22","2020-01-30 14:49:22","seeder"],
+  ["2","IT-201","Library","ตึกเทคโนโลยีสารสนเทศ","2020-01-30 14:49:22","2020-01-30 14:49:22","seeder"],
+  ["3","IT/101","Men's Toilet","ตึกเทคโนโลยีสารสนเทศ","2020-01-30 14:49:22","2020-01-30 14:49:22","seeder"],
+  ["4","CB-2308","CB_2308","ตึกCB2","2020-01-30 14:49:22","2020-01-30 14:49:22","seeder"],
+  ["5","CB-2307","Common_CB2","ตึกCB2","2020-01-30 14:49:22","2020-01-30 14:49:22","seeder"],
 ];
 
-const thTypeArray = ["#","Name","Create at","Update at","Update by","Action"];
+const thProblemDesArray = ["#","Problem Descriptions", "Type", "Create at","Update at","Update by","Action"];
+const tdProblemDesArray = [
+  ["1","เปิดไม่ติด","Computer","2020-01-30 14:49:22","2020-01-30 14:49:22","seeder"],
+  ["2","เมาส์เสีย","Computer","2020-01-30 14:49:22","2020-01-30 14:49:22","seeder"],
+  ["3","คียบอร์ดเสีย","Computer","2020-01-30 14:49:22","2020-01-30 14:49:22","seeder"],
+  ["4","เครื่องปรับอากาศมีกลิ่น","Air-Condition	","2020-01-30 14:49:22","2020-01-30 14:49:22","seeder"],
+];
+
+const thTypeArray = ["#","Name","Create at","Update by","Action"];
 const tdTypeArray = [
   ["1","Light","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"],
   ["2","Computer","2019-11-21 16:39:42","2019-11-21 16:39:42","seeder"],
@@ -640,6 +652,10 @@ module.exports = {
   style, // For notifications (App container and Notifications view)
   thBrandArray,
   tdBrandArray ,// For tables (TableList view)
+  thRoomArray,
+  tdRoomArray,
+  thProblemDesArray,
+  tdProblemDesArray,
   thTypeArray,
   tdTypeArray,
   thItemArray,

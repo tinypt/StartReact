@@ -17,15 +17,13 @@
 */
 import Dashboard from "views/Dashboard.jsx";
 import UserProfile from "views/UserProfile.jsx";
-import TableList from "views/TableList.jsx";
-import Typography from "views/Typography.jsx";
 import Icons from "views/Icons.jsx";
-import Maps from "views/Maps.jsx";
 import Notifications from "views/Notifications.jsx";
-import Upgrade from "views/Upgrade.jsx";
-import Buildings from 'views/Buildings.jsx';
 
+import Buildings from 'views/Buildings.jsx';
 import Brand from "views/Brand.jsx";
+import Rooms from 'views/Rooms'
+import ProblemDes from 'views/ProblemDes'
 import Items from "views/Items.jsx";
 import ItemTypes from "views/ItemTypes.jsx";
 
@@ -42,6 +40,20 @@ const dashboardRoutes = [
     name: "Building",
     icon: "pe-7s-graph",
     component: Buildings,
+    layout: "/admin"
+  },
+  {
+    path: "/Rooms",
+    name: "Room",
+    icon: "pe-7s-graph",
+    component: Rooms,
+    layout: "/admin"
+  },
+  {
+    path: "/ProblemDes",
+    name: "Problem Descriptions",
+    icon: "pe-7s-graph",
+    component: ProblemDes,
     layout: "/admin"
   },
    { path: "/Brand",

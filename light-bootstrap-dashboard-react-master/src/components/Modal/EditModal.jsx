@@ -9,11 +9,11 @@ export function EditModal({isEditModal,handleEditModal}) {
           <Modal.Title>Edit Brand</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-                body
+                จะแก้หรอ รอก่อนนะยังทำไม่เป็นอะ ซอรี่ _/\_
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary">Save Changes</Button>
-          <Button variant="secondary" onClick={()=>handleEditModal(false)}>Close</Button>
+          <Button variant="secondary" onClick={()=>handleEditModal(false)}>Cancel</Button>
+          <Button variant="primary">Delete</Button>
         </Modal.Footer>
       </Modal>
     </>

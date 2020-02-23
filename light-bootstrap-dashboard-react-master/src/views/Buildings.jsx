@@ -114,6 +114,9 @@ class Building extends Component {
                   </div>
                 }
               />
+               <Button bsStyle="info" fill type="submit">Import CSV</Button>
+              <Button bsStyle="info" fill type="submit">Export CSV</Button>
+              <Button bsStyle="simple" fill type="submit">Add Brand</Button>
             </Col>
           </Row>
         </Grid>
