@@ -1,19 +1,32 @@
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Col } from "react-bootstrap";
 import React from "react";
+import Input from "components/Input/Input.jsx";
 
-export function EditModal({isEditModal,handleEditModal}) {
+export function EditModal({ isEditModal, handleEditModal, title, data }) {
   return (
     <>
-      <Modal show={isEditModal} onHide={()=>handleEditModal(false)}>
+      <Modal show={isEditModal} onHide={() => handleEditModal(false, data)}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit Brand</Modal.Title>
+          <Modal.Title>{`${title} Brand`}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-                จะแก้หรอ รอก่อนนะยังทำไม่เป็นอะ ซอรี่ _/\_
+          <Col md={6}>
+            Brand id:<Input type="text" value={data.brand_id} />
+          </Col>
+          <Col md={6}>
+            Brand name: <Input type="text" value={data.brand_name} />
+          </Col>
+          <br/>
+          <br/>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={()=>handleEditModal(false)}>Cancel</Button>
-          <Button variant="primary">Delete</Button>
+          <Button
+            variant="secondary"
+            onClick={() => handleEditModal(false, data)}
+          >
+            Cancel
+          </Button>
+          <Button variant="primary">Confirm</Button>
         </Modal.Footer>
       </Modal>
     </>

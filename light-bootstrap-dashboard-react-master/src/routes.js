@@ -15,7 +15,16 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+
+import Buildings from 'views/Buildings.jsx';
+import Brands from "views/Brands.jsx";
+import Rooms from "views/Rooms.jsx";
+import Items from "views/Items.jsx";
+import ItemTypes from "views/ItemTypes.jsx";
+import ProblemDescription from "views/ProblemDescription.jsx";
+import Status from "views/Status.jsx";
 import Dashboard from "views/Dashboard.jsx";
+import NotificationProblems from "views/NotificationProblems";
 import UserProfile from "views/UserProfile.jsx";
 import TableList from "views/TableList.jsx";
 import Typography from "views/Typography.jsx";
@@ -23,39 +32,27 @@ import Icons from "views/Icons.jsx";
 import Maps from "views/Maps.jsx";
 import Notifications from "views/Notifications.jsx";
 import Upgrade from "views/Upgrade.jsx";
-import Buildings from 'views/Buildings.jsx';
-<<<<<<< HEAD
-=======
-
->>>>>>> b4fc681f34a1f3193f62e1298164f9b69efe3335
-import Brand from "views/Brand.jsx";
-import Items from "views/Items.jsx";
-import ItemTypes from "views/ItemTypes.jsx";
 
 const dashboardRoutes = [
   {
-    path: "/dashboard",
-    name: "Dashboard",
-    icon: "pe-7s-graph",
-    component: Dashboard,
-    layout: "/admin"
-  },
-  {
-    path: "/building",
-    name: "Building",
-    icon: "pe-7s-graph",
+    path: "/Building",
+    name: "Buildings",
+    icon: "pe-7s-culture",
     component: Buildings,
     layout: "/admin"
   },
-<<<<<<< HEAD
+  {
+    path: "/Room",
+    name: "Rooms",
+    icon: "pe-7s-wallet",
+    component: Rooms,
+    layout: "/admin"
+  },
   {
     path: "/Brand",
-=======
-   { path: "/Brand",
->>>>>>> b4fc681f34a1f3193f62e1298164f9b69efe3335
-    name: "Brand",
-    icon: "pe-7s-ribbon",
-    component: Brand,
+    name: "Brands",
+    icon: "pe-7s-ticket",
+    component: Brands,
     layout: "/admin"
   },
   {
@@ -67,18 +64,47 @@ const dashboardRoutes = [
   },
   {
     path: "/ItemTypes",
-    name: "Item Type",
+    name: "Item Types",
     icon: "pe-7s-photo-gallery",
     component: ItemTypes,
     layout: "/admin"
   },
   {
-    path: "/user",
-    name: "User Profile",
-    icon: "pe-7s-user",
-    component: UserProfile,
+    path: "/ProblemDesc",
+    name: "Problem Descriptions",
+    icon: "pe-7s-note2",
+    component: ProblemDescription,
     layout: "/admin"
   },
+  {
+    path: "/Status",
+    name: "Status",
+    icon: "pe-7s-tools",
+    component: Status,
+    layout: "/admin"
+  },
+  {
+    path: "/NotificationProblems",
+    name: "Notification Problems",
+    icon: "pe-7s-tools",
+    component: NotificationProblems,
+    layout: "/admin"
+  },
+  // {
+  //   path: "/user",
+  //   name: "User Profile",
+  //   icon: "pe-7s-user",
+  //   component: UserProfile,
+  //   layout: "/admin"
+  // },
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    icon: "pe-7s-graph",
+    component: Dashboard,
+    layout: "/admin"
+  }
+  // ,
   // {
   //   path: "/table",
   //   name: "Table List",
@@ -92,14 +118,15 @@ const dashboardRoutes = [
   //   icon: "pe-7s-news-paper",
   //   component: Typography,
   //   layout: "/admin"
+  // }
+  // ,
+  // {
+  //   path: "/icons",
+  //   name: "Icons",
+  //   icon: "pe-7s-science",
+  //   component: Icons,
+  //   layout: "/admin"
   // },
-  {
-    path: "/icons",
-    name: "Icons",
-    icon: "pe-7s-science",
-    component: Icons,
-    layout: "/admin"
-  },
   // {
   //   path: "/maps",
   //   name: "Maps",
@@ -107,13 +134,13 @@ const dashboardRoutes = [
   //   component: Maps,
   //   layout: "/admin"
   // },
-  {
-    path: "/notifications",
-    name: "Notifications",
-    icon: "pe-7s-bell",
-    component: Notifications,
-    layout: "/admin"
-  },
+  // {
+  //   path: "/notifications",
+  //   name: "Notifications",
+  //   icon: "pe-7s-bell",
+  //   component: Notifications,
+  //   layout: "/admin"
+  // },
   // {
   //   upgrade: true,
   //   path: "/upgrade",

@@ -16,15 +16,39 @@
 
 */
 import React, { Component } from "react";
+import { Row, Col } from "react-bootstrap";
 
 export class Card extends Component {
   render() {
     return (
       <div className={"card" + (this.props.plain ? " card-plain" : "")}>
-        <div className={"header" + (this.props.hCenter ? " text-center" : "")}>
-          <h4 className="title">{this.props.title}</h4>
-          <p className="category">{this.props.category}</p>
-        </div>
+        <Row>
+          <Col md={9}>
+            <div
+              className={"header" + (this.props.hCenter ? " text-center" : "")}
+            >
+              <h4 className="title">{this.props.title}</h4>
+              <p className="category">{this.props.category}</p>
+            </div>
+          </Col>
+          <Col md={1}>
+            <div
+              className="buttonAdd"
+              style={{ marginTop: 15, marginLeft: 10 }}
+            >
+              {this.props.buttonAdd}
+            </div>
+          </Col>
+          <Col md={2}>
+            <div
+              className="buttonDel"
+              style={{ marginTop: 15, marginLeft: 20 }}
+            >
+              {this.props.buttonDel}
+            </div>
+          </Col>
+        </Row>
+
         <div
           className={
             "content" +

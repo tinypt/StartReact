@@ -17,40 +17,52 @@
 */
 import React, { Component } from "react";
 import axios from "axios";
-import {Grid,Row,Col,Table,OverlayTrigger,Tooltip} from "react-bootstrap";
+import {
+  Grid,
+  Row,
+  Col,
+  Table,
+  OverlayTrigger,
+  Tooltip
+} from "react-bootstrap";
 import Card from "components/Card/Card.jsx";
 import Checkbox from "components/CustomCheckbox/CustomCheckbox.jsx";
+import _ from "lodash";
 import { thBrandArray } from "variables/Variables.jsx";
-import Tasks from "components/Tasks/Tasks";
+// import Tasks from "components/Tasks/Tasks";
 import Button from "components/CustomButton/CustomButton.jsx";
-import { EditModal } from "components/Modal/EditModal.jsx";
 import { RemoveModal } from "components/Modal/RemoveModal.jsx";
+import { AddModal } from "components/Modal/AddModal.jsx";
+import { DelModal } from "components/Modal/DelModal.jsx";
+import { EditModal } from "components/Modal/EditModal.jsx";
 class Brand extends Component {
   state = {
-    brands: [
-      {
-        brand_id: 999,
-        brand_name: "BH",
-        cancel_flag: "Y",
-        created_at: "test",
-        updated_at: "test",
-        update_by: "test"
-      }
-    ],
+    brands: [],
+    data: {},
     isEditModal: false,
-    isRemoveModal: false
+    isRemoveModal: false,
+    isAddModal: false,
+    isDelModal: false
   };
-  
-  handleEditModal = event => {
-    this.setState({ isEditModal: event });
+
+  handleEditModal = (event, brand) => {
+    this.setState({ isEditModal: event, data: brand });
   };
-  handleRemoveModal = event =>{
-    this.setState({isRemoveModal:event});
+
+  handleRemoveModal = (event, brand) => {
+    this.setState({ isRemoveModal: event, data: brand });
+  };
+
+  handleAddModal = event => {
+    this.setState({ isAddModal: event });
+  };
+
+  handleDelModal = event => {
+    this.setState({ isDelModal: event });
   };
 
   handleCheckbox = event => {
     const target = event.target;
-    console.log(event.target);
     this.setState({
       [target.name]: target.checked
     });
@@ -59,14 +71,22 @@ class Brand extends Component {
     var i = 0;
     this.setState((i = 1));
   }
-
   componentDidMount = () => {
-    axios.get("http://127.0.0.1:8000/api/hongbrand").then(response => {
+    axios.get(`${process.env.REACT_APP_BE}/brands`).then(response => {
       this.setState({
         brands: response.data
       });
     });
   };
+  // postDataHandle=()=>{
+  //   const data = {
+  //     code: this.state.code,
+  //     name: this.state.name
+  //   };
+  //   axios.post(`${process.env.REACT_APP_BE}/brands`,data).then(response =>{
+  //     console.log(response);
+  //   })
+  // }
   render() {
     var number = -1;
     var i = 0;
@@ -75,29 +95,60 @@ class Brand extends Component {
     // }
     const edit = <Tooltip id="edit_tooltip">Edit Task</Tooltip>;
     const remove = <Tooltip id="remove_tooltip">Remove</Tooltip>;
+
     return (
       <div className="content">
         <EditModal
           isEditModal={this.state.isEditModal}
           handleEditModal={this.handleEditModal}
+          title="edit"
+          data={this.state.data}
         />
+
         <RemoveModal
-        isRemoveModal={this.state.isRemoveModal}
-        handleRemoveModal={this.handleRemoveModal}/>
+          isRemoveModal={this.state.isRemoveModal}
+          handleRemoveModal={this.handleRemoveModal}
+          title="remove"
+          data={this.state.data}
+        />
+        <AddModal
+          isAddModal={this.state.isAddModal}
+          handleAddModal={this.handleAddModal}
+        />
+
+        <DelModal
+          isDelModal={this.state.isDelModal}
+          handleDelModal={this.handleDelModal}
+        />
+
         <Grid fluid>
           <Row>
             <Col md={12}>
-              {/* <Button bsStyle="info" pullRight fill type="submit">
-            Add New Brand
-            </Button>
-            <Button bsStyle="info" pullRight fill type="submit">
-              Delete 
-            </Button> */}
               <Card
                 title="ALL Brands"
                 category="ประเภทของแบรนด์"
                 ctTableFullWidth
                 ctTableResponsive
+                buttonAdd={
+                  <Button
+                    bsStyle="info"
+                    fill
+                    type="submit"
+                    onClick={() => this.handleAddModal(true)}
+                  >
+                    Add Brand
+                  </Button>
+                }
+                buttonDel={
+                  <Button
+                    bsStyle="danger"
+                    fill
+                    type="submit"
+                    onClick={() => this.handleDelModal(true)}
+                  >
+                    Delete
+                  </Button>
+                }
                 content={
                   <Table striped hover>
                     <thead>
@@ -115,7 +166,7 @@ class Brand extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {this.state.brands.map(brand => (
+                      {_.map(this.state.brands, brand => (
                         <tr key={brand.brand_id}>
                           <th>
                             <Checkbox
@@ -136,7 +187,9 @@ class Brand extends Component {
                                 simple
                                 type="button"
                                 bsSize="xs"
-                                onClick={() => this.handleEditModal(true)}
+                                onClick={() =>
+                                  this.handleEditModal(true, brand)
+                                }
                               >
                                 <i className="fa fa-edit" />
                               </Button>
@@ -147,7 +200,9 @@ class Brand extends Component {
                                 simple
                                 type="button"
                                 bsSize="xs"
-                                onClick={()=> this.handleRemoveModal(true)}
+                                onClick={() =>
+                                  this.handleRemoveModal(true, brand)
+                                }
                               >
                                 <i className="fa fa-times" />
                               </Button>
@@ -159,9 +214,17 @@ class Brand extends Component {
                   </Table>
                 }
               />
-              <Button bsStyle="info" fill type="submit">Import CSV</Button>
-              <Button bsStyle="info" fill type="submit">Export CSV</Button>
-              <Button bsStyle="simple" fill type="submit">Add Brand</Button>
+              <Col md={1}>
+                <Button bsStyle="primary" fill type="submit">
+                  Import CSV
+                </Button>
+              </Col>
+              <Col md={1}>
+                <Button bsStyle="success" fill type="submit">
+                  Export CSV
+                </Button>
+              </Col>
+              <Col md={10}></Col>
             </Col>
           </Row>
         </Grid>
