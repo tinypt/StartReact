@@ -16,12 +16,10 @@ import { RemoveModal } from "components/Modal/RemoveModal.jsx";
 import _ from "lodash";
 class NotiProblem extends Component {
   state = {
-    notiProblems: [{}],
+    notiProblems: [],
     isLoading: true
   };
 
- 
- 
   handleClick() {
     var i = 0;
     this.setState((i = 1));
@@ -62,11 +60,13 @@ class NotiProblem extends Component {
                     <tbody>
                     {_.map(this.state.notiProblems, notiProblem => (
                           <tr key={notiProblem.noti_id}>
+                            
                             <th>
 
                             </th>
                             <td>{notiProblem.item_id}</td>
-                            {/* <td>{notiProblem.status.status_name}</td> */}
+                            <td>{notiProblem.item.item_code}</td>
+                            <td>{notiProblem.status.status_name}</td>
                             <td>{notiProblem.problem_description}</td>
                             <td>{notiProblem.created_at}</td>
                             <td>{notiProblem.updated_at}</td>

@@ -44,7 +44,6 @@ class Brand extends Component {
     isAddModal: false,
     isDelModal: false
   };
-
   handleEditModal = (event, brand) => {
     this.setState({ isEditModal: event, data: brand });
   };

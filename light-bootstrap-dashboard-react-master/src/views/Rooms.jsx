@@ -44,6 +44,8 @@ class Room extends Component {
 
   componentDidMount = () => {
     axios.get(`${process.env.REACT_APP_BE}/rooms`).then(response => {
+      console.log(response.data)
+    
       this.setState({
         rooms: response.data.rooms,
         isLoading: false,
