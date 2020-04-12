@@ -17,6 +17,7 @@
 */
 import React from "react";
 import ReactDOM from "react-dom";
+// import sizes from 'react-sizes';
 
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
@@ -27,10 +28,13 @@ import "./assets/css/demo.css";
 import "./assets/css/pe-icon-7-stroke.css";
 
 import AdminLayout from "layouts/Admin.jsx";
+import Mobile from "./views/MobileSendProblem"
 
+//? เปลี่ยนswitchเป็น component แทน
 ReactDOM.render(
   <BrowserRouter>
-    <Switch>
+    <Switch> 
+      <Route path="/sendProblem/:id" render={props => <Mobile {...props} />} />
       <Route path="/admin" render={props => <AdminLayout {...props} />} />
       <Redirect from="/" to="/admin/NotificationProblems" />
     </Switch>
