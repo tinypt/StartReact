@@ -16,19 +16,26 @@
 
 */
 import React, { Component } from "react";
-import { Grid, Row, Col, Table,OverlayTrigger,
-  Tooltip } from "react-bootstrap";
-
+import {
+  Grid,
+  Row,
+  Col,
+  Table,
+  OverlayTrigger,
+  Tooltip
+} from "react-bootstrap";
+import axios from "axios";
 import Card from "components/Card/Card.jsx";
 import Checkbox from "components/CustomCheckbox/CustomCheckbox.jsx";
-import { thTypeArray, tdTypeArray } from "variables/Variables.jsx";
+import { thTypeArray } from "variables/Variables.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 
 class ItemTypes extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  state = {
+    itemTypes: [{}],
+    isEditModal: false,
+    isRemoveModal: false
+  };
   handleCheckbox = event => {
     const target = event.target;
     console.log(event.target);
@@ -37,7 +44,17 @@ class ItemTypes extends Component {
     });
   };
 
-  
+  handleClick() {
+    var i = 0;
+    this.setState((i = 1));
+  }
+  componentDidMount = () => {
+    axios.get("http://127.0.0.1:8000/api/item_types").then(response => {
+      this.setState({
+        itemTypes: response.data
+      });
+    });
+  };
   render() {
     var number = -1;
     var i = 0;
@@ -79,45 +96,46 @@ class ItemTypes extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {tdTypeArray.map((prop, key) => {
-                        return (
-                          <tr key={key}>
-                            <th>
+                      {this.state.itemTypes.map(itemType => (
+                        <tr key={itemType.type_id}>
+                          <th>
                             <Checkbox
-                                  number={key}
-                                  key={key}
-                                  isChecked={i === 1 || i === 2 ? true : false}
-                                ></Checkbox>
-                            </th>
-                            {prop.map((prop, key) => {
-                              return <td key={key}>{prop}</td>;
-                            })}
-                            <td>
-                              <OverlayTrigger placement="top" overlay={edit}>
-                                <Button
-                                  bsStyle="info"
-                                  simple
-                                  type="button"
-                                  bsSize="xs"
-                                >
-                                  <i className="fa fa-edit" />
-                                </Button>
-                              </OverlayTrigger>
-
-                              <OverlayTrigger placement="top" overlay={remove}>
-                                <Button
-                                  bsStyle="danger"
-                                  simple
-                                  type="button"
-                                  bsSize="xs"
-                                >
-                                  <i className="fa fa-times" />
-                                </Button>
-                              </OverlayTrigger>
-                            </td>
-                          </tr>
-                        );
-                      })}
+                              number={itemType.type_id}
+                              key={itemType.type_id}
+                              isChecked={i === 1 || i === 2 ? true : false}
+                            ></Checkbox>
+                          </th>
+                          <td>{itemType.type_id}</td>
+                          <td>{itemType.type_name}</td>
+                          <td>{itemType.created_at}</td>
+                          <td>{itemType.updated_at}</td>
+                          <td>{itemType.update_by}</td>
+                          <td>
+                            <OverlayTrigger placement="top" overlay={edit}>
+                              <Button
+                                bsStyle="info"
+                                simple
+                                type="button"
+                                bsSize="xs"
+                                onClick={() => this.handleEditModal(true)}
+                              >
+                                <i className="fa fa-edit" />
+                              </Button>
+                            </OverlayTrigger>
+                            <OverlayTrigger placement="top" overlay={remove}>
+                              <Button
+                                bsStyle="danger"
+                                simple
+                                type="button"
+                                bsSize="xs"
+                                onClick={() => this.handleRemoveModal(true)}
+                              >
+                                <i className="fa fa-times" />
+                              </Button>
+                            </OverlayTrigger>
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </Table>
                 }

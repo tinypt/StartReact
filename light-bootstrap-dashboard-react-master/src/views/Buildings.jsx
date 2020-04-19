@@ -7,18 +7,25 @@ import {
   OverlayTrigger,
   Tooltip
 } from "react-bootstrap";
-
 import Card from "components/Card/Card.jsx";
 import Checkbox from "components/CustomCheckbox/CustomCheckbox.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
-
-import { thBuildingArray, tdBuildingArray } from "variables/Variables.jsx";
-
+import axios from "axios";
+import _ from "lodash";
+import { thBuildingArray } from "variables/Variables.jsx";
 class Building extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  state = {
+    buildings: [],
+    isEditModal: false,
+    isRemoveModal: false
+  };
+  componentDidMount = () => {
+    axios.get(`${process.env.REACT_APP_BE}/buildings`).then(response => {
+      this.setState({
+        buildings: response.data
+      });
+    });
+  };
   handleCheckbox = event => {
     const target = event.target;
     console.log(event.target);
@@ -64,48 +71,46 @@ class Building extends Component {
                         </tr>
                       </thead>
                       <tbody>
-                        {tdBuildingArray.map((prop, key) => {
-                          return (
-                            <tr key={key}>
-                              <td>
-                                <Checkbox
-                                  number={key}
-                                  key={key}
-                                  isChecked={i === 1 || i === 2 ? true : false}
-                                ></Checkbox>
-                              </td>
-                              {prop.map((prop, key) => {
-                                return <td key={key}>{prop}</td>;
-                              })}
-                              <td>
-                                <OverlayTrigger placement="top" overlay={edit}>
-                                  <Button
-                                    bsStyle="info"
-                                    simple
-                                    type="button"
-                                    bsSize="xs"
-                                  >
-                                    <i className="fa fa-edit" />
-                                  </Button>
-                                </OverlayTrigger>
-
-                                <OverlayTrigger
-                                  placement="top"
-                                  overlay={remove}
+                        {_.map(this.state.buildings, building => (
+                          <tr key={building.brand_id}>
+                            <th>
+                              <Checkbox
+                                number={building.brand_id}
+                                key={building.brand_id}
+                                isChecked={i === 1 || i === 2 ? true : false}
+                              ></Checkbox>
+                            </th>
+                            <td>{building.building_id}</td>
+                            <td>{building.building_code}</td>
+                            <td>{building.building_name}</td>
+                            <td>{building.created_at}</td>
+                            <td>{building.updated_at}</td>
+                            <td>{building.update_by}</td>
+                            <td>
+                              <OverlayTrigger placement="top" overlay={edit}>
+                                <Button
+                                  bsStyle="info"
+                                  simple
+                                  type="button"
+                                  bsSize="xs"
                                 >
-                                  <Button
-                                    bsStyle="danger"
-                                    simple
-                                    type="button"
-                                    bsSize="xs"
-                                  >
-                                    <i className="fa fa-times" />
-                                  </Button>
-                                </OverlayTrigger>
-                              </td>
-                            </tr>
-                          );
-                        })}
+                                  <i className="fa fa-edit" />
+                                </Button>
+                              </OverlayTrigger>
+
+                              <OverlayTrigger placement="top" overlay={remove}>
+                                <Button
+                                  bsStyle="danger"
+                                  simple
+                                  type="button"
+                                  bsSize="xs"
+                                >
+                                  <i className="fa fa-times" />
+                                </Button>
+                              </OverlayTrigger>
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                     </Table>
                   </div>

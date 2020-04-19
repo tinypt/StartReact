@@ -30,7 +30,7 @@ class AdminNavbarLinks extends Component {
     );
     return (
       <div>
-        <Nav>
+        {/* <Nav>
           <NavItem eventKey={1} href="#">
             <i className="fa fa-dashboard" />
             <p className="hidden-lg hidden-md">Dashboard</p>
@@ -51,17 +51,16 @@ class AdminNavbarLinks extends Component {
             <i className="fa fa-search" />
             <p className="hidden-lg hidden-md">Search</p>
           </NavItem>
-        </Nav>
+        </Nav> */}
         <Nav pullRight>
-          <NavItem eventKey={1} href="#">
-            Account
+          <NavItem eventKey={1} href="History.jsx">
+            History
           </NavItem>
           <NavDropdown
             eventKey={2}
-            title="Dropdown"
-            
+            title="Hello Hong"
             id="basic-nav-dropdown-right"
-          >
+            >
             {/* <MenuItem eventKey={2.1}>Action</MenuItem>
             <MenuItem eventKey={2.2}>Another action</MenuItem>
             <MenuItem eventKey={2.3}>Something</MenuItem>
@@ -69,18 +68,9 @@ class AdminNavbarLinks extends Component {
             <MenuItem eventKey={2.5}>Something</MenuItem>
             <MenuItem divider />
             <MenuItem eventKey={2.5}>Separated link</MenuItem> */}
-            <MenuItem eventKey={2.1}>Notification Problems</MenuItem>
-            <MenuItem eventKey={2.2}>Problem Descriptions</MenuItem>
-            <MenuItem eventKey={2.3}>Building</MenuItem>
-            <MenuItem eventKey={2.4}>Rooms</MenuItem>
-            <MenuItem eventKey={2.5}>Items</MenuItem>
-            <MenuItem eventKey={2.6}>Item Types</MenuItem>
-            <MenuItem eventKey={2.7}>Brands</MenuItem>
-            <MenuItem eventKey={2.8}>Statuses</MenuItem>
+            <MenuItem eventKey={2.1}>Log out</MenuItem>
           </NavDropdown>
-          <NavItem eventKey={3} href="#">
-            Log out
-          </NavItem>
+          
         </Nav>
       </div>
     );
