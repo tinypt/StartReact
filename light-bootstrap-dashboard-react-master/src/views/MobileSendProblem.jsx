@@ -21,6 +21,9 @@ import { Grid, Row, Col, DropdownButton, MenuItem } from "react-bootstrap";
 // import Card from "components/Card/Card.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 import FormInputs from "components/FormInputs/FormInputs.jsx";
+import Modal from "../components/Modal/Modal";
+import ConfirmRequest from "./ConfirmRequest"
+
 
 class MobileSendProblem extends Component {
   constructor(props) {
@@ -28,9 +31,8 @@ class MobileSendProblem extends Component {
 
     this.dropdownHandel = this.dropdownHandel.bind(this);
     this.submitSendHandle = this.submitSendHandle.bind(this);
-    this.problemInputChangedHandler = this.problemInputChangedHandler.bind(
-      this
-    );
+    this.problemInputChangedHandler = this.problemInputChangedHandler.bind(this);
+    this.confirmModalHandler = this.confirmModalHandler.bind(this);
   }
   state = {
     item: {},
@@ -40,7 +42,8 @@ class MobileSendProblem extends Component {
       { value: "option3", key: "3" }
     ],
     titleDropdown: "Select Problem",
-    showInputProblem: false
+    showInputProblem: false,
+    confirmModal: false
   };
 
   dropdownHandel = value => {
@@ -70,28 +73,33 @@ class MobileSendProblem extends Component {
     console.log(event.target.value);
   };
 
-  submitSendHandle = (event) => {
+  submitSendHandle = event => {
     event.preventDefault();
     const id = {
       item_id: this.state.item.item_id
     };
-    console.log("submit");
-    axios.post(
-        "http://127.0.0.1:8000/api/send-problem/check",
-        id
-      )
+    console.log("submit", this.state.titleDropdown, id);
+    axios
+      .post("http://127.0.0.1:8000/api/send-problem/check", id)
       .then(response => {
-        console.log("post : " , response.data);
+        console.log("post : ", response.data);
       })
       .catch(error => {
         console.log(error);
       });
   };
 
+  confirmModalHandler () {
+    this.setState({
+      confirmModal: true
+    })
+  }
+
   componentDidMount = () => {
     const code = this.props.match.params.id;
     axios
-      .get("http://127.0.0.1:8000/api/send-problem/" + code).then(response => {
+      .get("http://127.0.0.1:8000/api/send-problem/" + code)
+      .then(response => {
         this.setState({
           item: response.data
         });
@@ -100,116 +108,124 @@ class MobileSendProblem extends Component {
   };
   render() {
     return (
-      <div className="content" style={{ backgroundColor: "#EDE7E7" }}>
-        <Grid>
-          <Row>
-            <Col>
-              <h1>Send Problem</h1>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <h5>แจ้งปัญหาการใช้งานครุภัณฑ์ชำรุด</h5>
-            </Col>
-          </Row>
-          <form onSubmit={(event)=>this.submitSendHandle(event)}>
+      <fragment>
+        <Modal show={this.state.confirmModal}>
+          <ConfirmRequest problem={this.state.titleDropdown} item={this.state.item}/>
+        </Modal>
+        <div className="content" style={{ backgroundColor: "#EDE7E7" }}>
+          <Grid>
             <Row>
               <Col>
-                <FormInputs
-                  ncols={["col-md-5"]}
-                  properties={[
-                    {
-                      label: "Room:",
-                      type: "text",
-                      bsClass: "form-control",
-                      defaultValue: this.state.item.room_id,
-                      disabled: true
-                    }
-                  ]}
-                />
+                <h1>Send Problem</h1>
               </Col>
             </Row>
             <Row>
               <Col>
-                <FormInputs
-                  ncols={["col-md-5"]}
-                  properties={[
-                    {
-                      label: "Item Code:",
-                      type: "text",
-                      bsClass: "form-control",
-                      defaultValue: this.state.item.item_code,
-                      disabled: true
-                    }
-                  ]}
-                />
+                <h5>แจ้งปัญหาการใช้งานครุภัณฑ์ชำรุด</h5>
               </Col>
             </Row>
-            <Row>
-              <Col>
-                <FormInputs
-                  ncols={["col-md-5"]}
-                  properties={[
-                    {
-                      label: "Item Name:",
-                      type: "text",
-                      bsClass: "form-control",
-                      defaultValue: this.state.item.item_name,
-                      disabled: true
-                    }
-                  ]}
-                />
-              </Col>
-            </Row>
-            <Row>Problem:*</Row>
-            <Row>
-              <Col>
-                <DropdownButton title={this.state.titleDropdown} id="problemSend">
-                  {this.state.problemDes.map(problem => {
-                    return (
-                      <MenuItem
-                        key={problem.key}
-                        value={problem.key}
-                        onClick={() => this.dropdownHandel(problem)}
-                      >
-                        {problem.value}
-                      </MenuItem>
-                    );
-                  })}
-                </DropdownButton>
-              </Col>
-            </Row>
-            {this.state.showInputProblem === true ? (
+            <form onSubmit={event => this.submitSendHandle(event)}>
               <Row>
                 <Col>
                   <FormInputs
-                    ncols={["col-md-12"]}
+                    ncols={["col-md-5"]}
                     properties={[
                       {
+                        label: "Room:",
                         type: "text",
                         bsClass: "form-control",
-                        placeholder: "ใส่ข้อมูลปัญหาอื่นๆ"
+                        defaultValue: this.state.item.room_id,
+                        disabled: true
                       }
                     ]}
-                    componentClass="textarea"
-                    changed={this.problemInputChangedHandler}
                   />
                 </Col>
               </Row>
-            ) : null}
+              <Row>
+                <Col>
+                  <FormInputs
+                    ncols={["col-md-5"]}
+                    properties={[
+                      {
+                        label: "Item Code:",
+                        type: "text",
+                        bsClass: "form-control",
+                        defaultValue: this.state.item.item_code,
+                        disabled: true
+                      }
+                    ]}
+                  />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <FormInputs
+                    ncols={["col-md-5"]}
+                    properties={[
+                      {
+                        label: "Item Name:",
+                        type: "text",
+                        bsClass: "form-control",
+                        defaultValue: this.state.item.item_name,
+                        disabled: true
+                      }
+                    ]}
+                  />
+                </Col>
+              </Row>
+              <Row>Problem:*</Row>
+              <Row>
+                <Col>
+                  <DropdownButton
+                    title={this.state.titleDropdown}
+                    id="problemSend"
+                  >
+                    {this.state.problemDes.map(problem => {
+                      return (
+                        <MenuItem
+                          key={problem.key}
+                          value={problem.key}
+                          onClick={() => this.dropdownHandel(problem)}
+                        >
+                          {problem.value}
+                        </MenuItem>
+                      );
+                    })}
+                  </DropdownButton>
+                </Col>
+              </Row>
+              {this.state.showInputProblem === true ? (
+                <Row>
+                  <Col>
+                    <FormInputs
+                      ncols={["col-md-12"]}
+                      properties={[
+                        {
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "ใส่ข้อมูลปัญหาอื่นๆ"
+                        }
+                      ]}
+                      componentClass="textarea"
+                      changed={this.problemInputChangedHandler}
+                    />
+                  </Col>
+                </Row>
+              ) : null}
 
-            <Row style={{ marginTop: 50 }}>
-              <Col xs={4} md={4} />
-              <Col xs={4} md={4}>
-                <Button bsStyle="info" fill type="submit">
-                  Submit
-                </Button>
-              </Col>
-              <Col xs={4} md={4} />
-            </Row>
-          </form>
-        </Grid>
-      </div>
+              <Row style={{ marginTop: 50 }}>
+                <Col xs={4} md={4} />
+                <Col xs={4} md={4}>
+                  <Button bsStyle="info" fill type="submit" onClick={()=>this.confirmModalHandler()}>
+                    Submit
+                  </Button>
+                </Col>
+                <Col xs={4} md={4} />
+              </Row>
+            </form>
+          </Grid>
+        </div>
+      </fragment>
     );
   }
 }
