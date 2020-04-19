@@ -26,8 +26,32 @@ import Rooms from 'views/Rooms'
 import ProblemDes from 'views/ProblemDes'
 import Items from "views/Items.jsx";
 import ItemTypes from "views/ItemTypes.jsx";
+import sendProblem from "views/MobileSendProblem"
+import confirmRequest from "views/ConfirmRequest"
+import ContactPage from "views/ContactPage";
 
 const dashboardRoutes = [
+  {
+    path: "/sendProblem",
+    name: "Mobile Test",
+    icon: "pe-7s-graph",
+    component: sendProblem,
+    layout: "/admin"
+  },
+  {
+    path: "/confirmRequest",
+    name: "Confirm Request",
+    icon: "pe-7s-graph",
+    component: confirmRequest,
+    layout: "/admin"
+  },
+  {
+    path: "/contactUs",
+    name: "contact Us",
+    icon: "pe-7s-graph",
+    component: ContactPage,
+    layout: "/admin"
+  },
   {
     path: "/dashboard",
     name: "Dashboard",

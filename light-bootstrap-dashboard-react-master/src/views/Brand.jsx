@@ -53,13 +53,9 @@ class Brand extends Component {
       [target.name]: target.checked
     });
   };
-  handleClick() {
-    var i = 0;
-    this.setState((i = 1));
-  }
 
   componentDidMount = () => {
-    axios.get("http://127.0.0.1:8000/api/hongbrand").then(response => {
+    axios.get("http://127.0.0.1:8000/api/brands").then(response => {
       this.setState({
         brands: response.data
       });

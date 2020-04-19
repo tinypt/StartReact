@@ -521,7 +521,10 @@ const tdProblemDesArray = [
   ["1","เปิดไม่ติด","Computer","2020-01-30 14:49:22","2020-01-30 14:49:22","seeder"],
   ["2","เมาส์เสีย","Computer","2020-01-30 14:49:22","2020-01-30 14:49:22","seeder"],
   ["3","คียบอร์ดเสีย","Computer","2020-01-30 14:49:22","2020-01-30 14:49:22","seeder"],
-  ["4","เครื่องปรับอากาศมีกลิ่น","Air-Condition	","2020-01-30 14:49:22","2020-01-30 14:49:22","seeder"],
+  ["4","เครื่องปรับอากาศมีกลิ่น","Air-Condition","2020-01-30 14:49:22","2020-01-30 14:49:22","seeder"],
+  ["5","เครื่องปรับอากาศไม่เย็น","Air-Condition","2020-01-30 14:49:22","2020-01-30 14:49:22","seeder"],
+  ["6","เครื่องปรับอากาศไม่ติด","Air-Condition","2020-01-30 14:49:22","2020-01-30 14:49:22","seeder"],
+  ["7","	หลอดไฟดับ","Light","2020-01-30 14:49:22","2020-01-30 14:49:22","seeder"],
 ];
 
 const thTypeArray = ["#","Name","Create at","Update by","Action"];
@@ -648,8 +651,7 @@ var legendBar = {
 module.exports = {
   style, // For notifications (App container and Notifications view) // For tables (TableList view)
   thBuildingArray,
-  tdBuildingArray,
-  style, // For notifications (App container and Notifications view)
+  tdBuildingArray, // For notifications (App container and Notifications view)
   thBrandArray,
   tdBrandArray ,// For tables (TableList view)
   thRoomArray,

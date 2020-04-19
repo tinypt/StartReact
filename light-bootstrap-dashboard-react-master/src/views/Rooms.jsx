@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import {Grid,Row,Col,Table,OverlayTrigger,Tooltip} from "react-bootstrap";
 import Card from "components/Card/Card.jsx";
 import Checkbox from "components/CustomCheckbox/CustomCheckbox.jsx";
@@ -11,10 +10,10 @@ class Room extends Component {
         this.state = {};
       }
   
-  handleClick() {
-    var i = 0;
-    this.setState((i = 1));
-  }
+  // handleClick() {
+  //   var i = 0;
+  //   this.setState((i = 1));
+  // }
 
   render() {
     var number = -1;

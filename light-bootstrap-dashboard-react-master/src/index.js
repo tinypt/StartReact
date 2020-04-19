@@ -36,7 +36,7 @@ ReactDOM.render(
     <Switch> 
       <Route path="/sendProblem/:id" render={props => <Mobile {...props} />} />
       <Route path="/admin" render={props => <AdminLayout {...props} />} />
-      <Redirect from="/" to="/admin/dashboard" />
+      <Redirect from="/" to="/admin/ConfirmRequest" />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")

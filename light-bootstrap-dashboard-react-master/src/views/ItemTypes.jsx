@@ -37,10 +37,7 @@ class ItemTypes extends Component {
     });
   };
 
-  handleClick() {
-    var i = 0;
-    this.setState((i = 1));
-  }
+  
   render() {
     var number = -1;
     var i = 0;
